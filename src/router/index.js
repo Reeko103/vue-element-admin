@@ -68,6 +68,39 @@ export const constantRoutes = [
       }
     ]
   },
+
+  /// demo-开始
+  {
+    path: '/demo',
+    component: Layout,
+    redirect: '/demo/table',
+    name: 'Demo',
+    meta: {
+      title: 'demo',
+      icon: 'el-icon-star-on',
+      roles: ['admin'] // 您可以在根导航中设置角色
+    },
+    children: [
+      {
+        path: 'table',
+        component: () => import('@/views/demo(案例)/Table'),
+        name: 'TableDemo',
+        meta: {
+          title: '表格案例',
+        }
+      },
+      {
+        path: 'importExport',
+        component: () => import('@/views/demo(案例)/ImportExport'),
+        name: 'ImportExportDemo',
+        meta: {
+          title: '导入导出',
+        }
+      }
+    ]
+    
+  },
+  /// demo-结束
 ]
 
 /**

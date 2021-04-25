@@ -8,6 +8,27 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/29188175?v=4">
     <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
     <title><%= webpackConfig.name %></title>
+    <style>
+      /* 设置滚动条的样式 */
+      ::-webkit-scrollbar { width: 6px;height: 1px; }/*高宽分别对应横竖滚动条的尺寸*/
+      /* 滚动槽 */
+      ::-webkit-scrollbar-track { border-radius: 10px; background: none; }
+      /* 滚动条滑块 */
+      ::-webkit-scrollbar-thumb { border-radius: 30px; background: #E5E5E5; }
+      /* 按钮hover */
+      .publicReset:hover{color: #18B2A8 !important;border: 1px solid #18B2A8 !important;}
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          -webkit-tap-highlight-color: transparent !important;
+          appearance: none; 
+          margin: 0; 
+      }
+      i,button{-webkit-tap-highlight-color: transparent !important;}
+      input{
+          -moz-appearance:textfield;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>

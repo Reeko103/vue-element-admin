@@ -350,25 +350,27 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
-        const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
-        const data = this.formatJson(filterVal)
+        const tHeader = ['time', 'avolt', 'bvolt', 'cvolt']   //表头 必填
+        const filterVal = ['time', 'avolt', 'bvolt', 'cvolt'] // 数据
+        const list = [
+          {time:'1',avolt:'220',bvolt:'220',cvolt:'220'},
+          {time:'2',avolt:'220',bvolt:'220',cvolt:'220'},
+          {time:'3',avolt:'220',bvolt:'220',cvolt:'220'},
+        ] // 数据
+        const data = this.formatJson(filterVal,list) 
+        console.log(data)
         excel.export_json_to_excel({
-          header: tHeader,
-          data,
-          filename: 'table-list'
+          header: tHeader,             //表头 必填
+          data,                        //具体数据 必填
+          filename: '书刊狗贼看什么看', //具体数据 必填
+          autoWidth: true,             //非必填
+          bookType: 'csv'             //非必填 xlsx txt csv
         })
         this.downloadLoading = false
       })
     },
-    formatJson(filterVal) {
-      return this.list.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
-          return parseTime(v[j])
-        } else {
-          return v[j]
-        }
-      }))
+    formatJson(filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => v[j] ))
     },
     getSortClass: function(key) {
       const sort = this.listQuery.sort
